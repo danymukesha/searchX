@@ -13,6 +13,18 @@ pip install fastapi uvicorn sqlite3 transformers torch plotly
 uvicorn api.rest:app --reload # run api
 ```
 
-**Access:**
+Access:
 - REST API: `http://localhost:8000/search?query=BRCA1`
 - Genome Browser: `http://localhost:8000/browser?chr=7&start=100000&end=200000`
+
+With API calls:
+# General search
+curl "http://localhost:8000/search?query=BRCA1"
+
+# Clinical search
+curl "http://localhost:8000/search?query=BRCA1&context=clinical"
+
+# Add a sequence (POST example)
+curl -X POST "http://localhost:8000/add_sequence" \
+-H "Content-Type: application/json" \
+-d '{"id":"test1", "seq":"ATGC", "type":"DNA", "organism":"Human"}'
