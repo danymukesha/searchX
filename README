@@ -1,1 +1,18 @@
 Tool and platform integrating multi-omics data search, clinical variant interpretation, and collaborative research tools to bridge the gap between genomic data and actionable biological insights.
+
+Features implementations:
+-- Context-aware search -> Prioritizes results based on clinical/research context  -> `core/search.py`  ->
+-- Protein function prediction -> Uses ESM-2 embeddings for zero-shot prediction  -> `ml/prediction.py`  ->
+-- Interactive genome browser -> Combines genomic, epigenetic, and clinical data  -> `visualization/genome_browser.py`  ->
+-- Real-time collaboration -> WebSocket-based shared analysis  -> `api/websockets.py`  ->
+-- Blockchain annotations -> Immutable community contributions  -> `data/integration.py`  ->
+
+Deployment:
+```bash
+pip install fastapi uvicorn sqlite3 transformers torch plotly
+uvicorn api.rest:app --reload # run api
+```
+
+**Access:**
+- REST API: `http://localhost:8000/search?query=BRCA1`
+- Genome Browser: `http://localhost:8000/browser?chr=7&start=100000&end=200000`
